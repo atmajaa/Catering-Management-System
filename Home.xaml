@@ -1,0 +1,27 @@
+﻿<Window x:Class="CaterHub.Home"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CaterHub"
+        mc:Ignorable="d"
+        Title="Home" Height="670" Width="1200" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="180"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Left Menu -->
+        <StackPanel Background="#FF12372A" Grid.Column="0" Grid.ColumnSpan="2">
+            <Button Content="Customers" Name="Button1" Click="Button_Click" Margin="15" Height="35" BorderBrush="White" Background="White" />
+            <Button Content="Order" x:Name="orderBtn" Click="Button_Click" Margin="15" Height="35" BorderBrush="White" Background="White" />
+            <Button Content="Menu " x:Name="menuBtn" Click="Button_Click"  Margin="15" Height="35" BorderBrush="White" Background="White" />
+            <Button Content="Dashboard " x:Name="dashboardBtn" Click="Button_Click"  Margin="15" Height="35" BorderBrush="White" Background="White" />
+        </StackPanel>
+
+        <!-- Right Panel -->
+        <ContentControl x:Name="MainContent" Grid.Column="2" Background="White" Grid.ColumnSpan="2" />
+    </Grid>
+</Window>

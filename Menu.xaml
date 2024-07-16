@@ -1,0 +1,108 @@
+﻿<UserControl x:Class="CaterHub.Menu"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="670" d:DesignWidth="1000" Loaded="UserControl_Loaded">
+    <UserControl.Resources>
+        <!-- Define DataGridColumnHeaderStyle resource -->
+        <Style x:Key="DataGridColumnHeaderStyle" TargetType="DataGridColumnHeader">
+            <Setter Property="Background" Value="#FF404040" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="FontFamily" Value="Sitka Heading" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+        </Style>
+
+        <!-- Define DataGridCellStyle resource -->
+        <Style x:Key="DataGridCellStyle" TargetType="DataGridCell">
+            <Setter Property="FontFamily" Value="Sitka Heading" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+        </Style>
+    </UserControl.Resources>
+
+    <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="350*"/>
+            <ColumnDefinition Width="325*"/>
+            <ColumnDefinition Width="325*"/>
+        </Grid.ColumnDefinitions>
+        <!-- Define row structure -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="335*"/>
+            <RowDefinition Height="335*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock HorizontalAlignment="Left" Margin="68,106,0,0" TextWrapping="Wrap" Text="Add Menu Items" VerticalAlignment="Top" FontFamily="Sitka Heading" FontWeight="Bold" FontSize="48" Height="60" Width="234"/>
+        <TextBlock HorizontalAlignment="Left" Margin="22,194,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" FontFamily="Sitka Display" FontSize="14" Width="68" Height="28"/>
+        <TextBox x:Name="nameTxt" HorizontalAlignment="Left" Margin="20,218,0,0" TextWrapping="Wrap" VerticalAlignment="Top" VerticalContentAlignment="Center" Width="314" FontFamily="Sitka Text" BorderBrush="#FFC5C5C5" Height="29" FontSize="14"/>
+        <TextBlock HorizontalAlignment="Left" Margin="24,265,0,0" TextWrapping="Wrap" Text="Price" VerticalAlignment="Top" FontFamily="Sitka Display" FontSize="14" Width="68" Height="28"/>
+        <TextBlock HorizontalAlignment="Left" Margin="23,333,0,0" TextWrapping="Wrap" Text="Category" VerticalAlignment="Top" FontFamily="Sitka Display" FontSize="14" Width="88" Height="26" Grid.RowSpan="2"/>
+        <ComboBox x:Name="categoryCombo" HorizontalAlignment="Left" Margin="23,16,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" Width="316" OpacityMask="Black" Height="29" SelectedIndex="1" Grid.Row="1">
+            <ComboBox.Background>
+                <LinearGradientBrush EndPoint="0,1">
+                    <GradientStop Color="#FF9A9A9A"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </ComboBox.Background>
+            <ComboBoxItem Content="Indian"/>
+            <ComboBoxItem Content="Chinese"/>
+            <ComboBoxItem Content="Snacks"/>
+            <ComboBoxItem Content="Desserts"/>
+        </ComboBox>
+        <TextBox x:Name="priceTxt" HorizontalAlignment="Left" Margin="23,287,0,0" TextWrapping="Wrap" VerticalAlignment="Top" VerticalContentAlignment="Center" Width="316" FontFamily="Sitka Text" BorderBrush="#FFBFBFBF" Height="29" FontSize="14"/>
+        <TextBlock HorizontalAlignment="Left" Margin="107,25,0,0" TextWrapping="Wrap" Text="Indian" VerticalAlignment="Top" FontFamily="Sitka Heading" FontWeight="Bold" FontSize="36" Height="45" Width="104" Grid.Column="2" Grid.Row="0"/>
+        <TextBlock HorizontalAlignment="Left" Margin="86,24,0,0" TextWrapping="Wrap" Text="Chinese" VerticalAlignment="Top" FontFamily="Sitka Heading" FontWeight="Bold" FontSize="36" Height="45" Width="146" Grid.Column="1" Grid.Row="0"/>
+
+        <!-- DataGrid for Chinese Menu -->
+        <DataGrid x:Name="chineseDataGrid" AutoGenerateColumns="True" Margin="0,59,10,5" Grid.Column="1" Grid.Row="0"
+                  ColumnHeaderStyle="{StaticResource DataGridColumnHeaderStyle}" 
+                  CellStyle="{StaticResource DataGridCellStyle}" 
+                  ColumnWidth="*" 
+                  ColumnHeaderHeight="39" 
+                  RowHeight="30" ScrollViewer.HorizontalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" Background="{x:Null}" SelectionChanged="chineseDataGrid_SelectionChanged" />
+
+        <!-- DataGrid for Indian Menu -->
+        <DataGrid x:Name="indianDataGrid" AutoGenerateColumns="True" Margin="0,59,10,7" Grid.Column="2" Grid.Row="0"
+                  ColumnHeaderStyle="{StaticResource DataGridColumnHeaderStyle}" 
+                  CellStyle="{StaticResource DataGridCellStyle}" 
+                  ColumnWidth="*" 
+                  ColumnHeaderHeight="39" 
+                  RowHeight="30" ScrollViewer.HorizontalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Hidden" ScrollViewer.CanContentScroll="False" VerticalScrollBarVisibility="Hidden" Background="{x:Null}" SelectionChanged="indianDataGrid_SelectionChanged" />
+        <TextBlock HorizontalAlignment="Left" Margin="96,2,0,0" TextWrapping="Wrap" Text="Snacks" VerticalAlignment="Top" FontFamily="Sitka Heading" FontWeight="Bold" FontSize="36" Height="46" Width="114" Grid.Column="1" Grid.Row="1"/>
+        <DataGrid x:Name="snacksDataGrid" AutoGenerateColumns="True" Margin="0,37,2,0" Grid.Column="1" Grid.Row="1"
+            ColumnHeaderStyle="{StaticResource DataGridColumnHeaderStyle}" 
+            CellStyle="{StaticResource DataGridCellStyle}" 
+            ColumnWidth="*" 
+            ColumnHeaderHeight="39" 
+            RowHeight="30" ScrollViewer.HorizontalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" RenderTransformOrigin="0.5,0.5" Height="288" VerticalAlignment="Top" Background="{x:Null}" SelectionChanged="snacksDataGrid_SelectionChanged" >
+        </DataGrid>
+        <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="Desserts" VerticalAlignment="Top" FontFamily="Sitka Heading" FontWeight="Bold" FontSize="36" Height="46" Width="146" Grid.Column="2" Grid.Row="1" />
+        <DataGrid x:Name="dessertsDataGrid" AutoGenerateColumns="True" Margin="0,35,10,10" Grid.Column="2" Grid.Row="1"
+            ColumnHeaderStyle="{StaticResource DataGridColumnHeaderStyle}" 
+            CellStyle="{StaticResource DataGridCellStyle}" 
+            ColumnWidth="*" 
+            ColumnHeaderHeight="39" 
+            RowHeight="30" ScrollViewer.HorizontalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Hidden" RenderTransformOrigin="0.5,0.5" Background="{x:Null}" SelectionChanged="dessertsDataGrid_SelectionChanged" >
+            <DataGrid.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="1"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </DataGrid.RenderTransform>
+        </DataGrid>
+        <Button x:Name="saveBtn" Content="Save" HorizontalAlignment="Left" Margin="21,69,0,0" VerticalAlignment="Top" Height="32" Width="92" Background="#FF3C3C3C" Foreground="#FFCECECE" BorderBrush="White" Click="saveBtn_Click" Grid.Row="1"/>
+        <Button x:Name="deleteBtn" Content="Delete" HorizontalAlignment="Left" Margin="243,69,0,0" VerticalAlignment="Top" Height="32" Width="92" Background="#FF3C3C3C" Foreground="#FFCECECE" BorderBrush="White" Grid.Row="1" Click="deleteBtn_Click"/>
+        <Button x:Name="updateBtn" Content="Update" HorizontalAlignment="Left" Margin="131,68,0,0" VerticalAlignment="Top" Height="32" Width="92" Background="#FF3C3C3C" Foreground="#FFCECECE" BorderBrush="White" Grid.Row="1" Click="updateBtn_Click"/>
+        <TextBlock x:Name="nameError" HorizontalAlignment="Left" Margin="19,247,0,0" TextWrapping="Wrap" Text="Please enter menu name" VerticalAlignment="Top" Foreground="#FFC33D3D" Visibility="Hidden"/>
+        <TextBlock x:Name="priceError" HorizontalAlignment="Left" Margin="24,316,0,0" TextWrapping="Wrap" Text="Please enter price" VerticalAlignment="Top" Foreground="#FFC33D3D" Visibility="Hidden"/>
+    </Grid>
+</UserControl>
